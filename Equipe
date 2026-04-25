@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notre équipe – Cabinet Barcelonne & Loison</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f2235;--teal:#2a7d6f;--teal-light:#3aa08e;--cream:#f7f5f0;--white:#ffffff;--gray-light:#f0eeea;--gray-mid:#c8c4bc;--gray-text:#6b6560;--gold:#c9a96e;--font-display:'Cormorant Garamond',serif;--font-body:'DM Sans',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{font-family:var(--font-body);background:var(--white);color:var(--navy);line-height:1.6;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:72px;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(42,125,111,0.12);transition:box-shadow .3s;}nav.scrolled{box-shadow:0 4px 24px rgba(15,34,53,0.08);}
+.nav-logo{font-family:var(--font-display);font-size:1.25rem;font-weight:500;color:var(--navy);letter-spacing:0.02em;text-decoration:none;display:flex;flex-direction:column;line-height:1.2;}.nav-logo span{font-size:0.65rem;font-family:var(--font-body);font-weight:300;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}.nav-links a{text-decoration:none;font-size:0.82rem;font-weight:400;color:var(--gray-text);letter-spacing:0.04em;transition:color .2s;}.nav-links a:hover,.nav-links a.active{color:var(--teal);}
+.nav-cta{background:var(--teal);color:white;padding:10px 22px;border-radius:2px;font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .2s;}.nav-cta:hover{background:var(--teal-light);transform:translateY(-1px);}
+.page-hero{padding:140px 8vw 5rem;background:var(--navy);position:relative;overflow:hidden;}.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(42,125,111,0.18) 0%,transparent 70%);pointer-events:none;}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:0.75rem;color:rgba(255,255,255,0.4);margin-bottom:2rem;position:relative;z-index:1;}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;transition:color .2s;}.breadcrumb a:hover{color:var(--teal-light);}.breadcrumb span{color:rgba(255,255,255,0.7);}
+.page-hero-label{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal-light);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:10px;position:relative;z-index:1;}.page-hero-label::before{content:'';display:block;width:20px;height:1px;background:var(--teal-light);}
+.page-hero-title{font-family:var(--font-display);font-size:clamp(2.5rem,4vw,4.5rem);font-weight:300;color:white;line-height:1.1;margin-bottom:1.25rem;position:relative;z-index:1;}.page-hero-title em{font-style:italic;color:var(--teal-light);}
+.page-hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.6);max-width:560px;line-height:1.75;position:relative;z-index:1;}
+section{padding:5rem 8vw;}
+.section-label{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:10px;}.section-label::before{content:'';display:block;width:20px;height:1px;background:var(--teal);}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,3vw,3rem);font-weight:300;line-height:1.15;color:var(--navy);margin-bottom:1rem;}.section-title em{font-style:italic;color:var(--teal);}
+.section-subtitle{font-size:0.93rem;color:var(--gray-text);max-width:540px;line-height:1.75;}
+
+/* PRATICIENS */
+.praticiens-section{background:var(--white);}
+.praticien-card{display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:start;padding:4rem 0;border-bottom:1px solid var(--gray-light);}
+.praticien-card:last-of-type{border-bottom:none;}
+.praticien-photo{background:linear-gradient(135deg,var(--teal) 0%,var(--navy) 100%);border-radius:4px;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.praticien-initiale{font-family:var(--font-display);font-size:5rem;color:rgba(255,255,255,0.3);font-weight:300;}
+.praticien-photo-badge{position:absolute;bottom:1rem;left:1rem;right:1rem;background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.15);border-radius:2px;padding:0.75rem 1rem;text-align:center;}
+.praticien-photo-badge-name{font-family:var(--font-display);font-size:1.1rem;color:white;font-weight:400;}
+.praticien-photo-badge-title{font-size:0.7rem;color:rgba(255,255,255,0.65);letter-spacing:0.08em;text-transform:uppercase;}
+.praticien-content{}
+.praticien-role{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:0.5rem;}
+.praticien-name{font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:var(--navy);margin-bottom:1.25rem;line-height:1.1;}
+.praticien-bio{font-size:0.9rem;color:var(--gray-text);line-height:1.8;margin-bottom:2rem;}
+.praticien-tags{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:2rem;}
+.praticien-tag{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(42,125,111,0.3);padding:5px 14px;border-radius:2px;background:rgba(42,125,111,0.04);}
+.praticien-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;padding:1.5rem;background:var(--cream);border-radius:2px;}
+.p-stat{display:flex;flex-direction:column;}
+.p-stat-num{font-family:var(--font-display);font-size:2rem;color:var(--navy);font-weight:300;line-height:1;}
+.p-stat-label{font-size:0.72rem;color:var(--gray-text);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;}
+
+/* ÉQUIPE */
+.equipe-section{background:var(--cream);}
+.equipe-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem;}
+.equipe-card{background:white;border:1px solid var(--gray-light);border-radius:2px;padding:2.5rem;display:flex;gap:1.75rem;align-items:flex-start;transition:border-color .3s,box-shadow .3s;}
+.equipe-card:hover{border-color:var(--teal);box-shadow:0 8px 32px rgba(42,125,111,0.1);}
+.equipe-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--teal) 0%,var(--navy) 100%);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.6rem;color:white;font-weight:300;flex-shrink:0;border:3px solid var(--cream);box-shadow:0 0 0 2px var(--teal);}
+.equipe-info{}
+.equipe-role{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:0.25rem;}
+.equipe-name{font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--navy);margin-bottom:0.5rem;}
+.equipe-bio{font-size:0.83rem;color:var(--gray-text);line-height:1.7;}
+
+/* VALEURS */
+.valeurs-section{background:var(--navy);}
+.valeurs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.08);margin-top:3rem;}
+.valeur-card{background:var(--navy);padding:2.5rem 2rem;transition:background .3s;}
+.valeur-card:hover{background:#162d45;}
+.valeur-icon{width:48px;height:48px;background:rgba(42,125,111,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;border:1px solid rgba(42,125,111,0.25);}
+.valeur-icon svg{width:22px;height:22px;color:var(--teal-light);}
+.valeur-title{font-family:var(--font-display);font-size:1.3rem;color:white;font-weight:400;margin-bottom:0.5rem;}
+.valeur-text{font-size:0.83rem;color:rgba(255,255,255,0.5);line-height:1.7;}
+
+.cta-band{background:linear-gradient(135deg,var(--teal) 0%,var(--navy) 100%);padding:4rem 8vw;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.cta-band-text{color:white;}.cta-band-title{font-family:var(--font-display);font-size:2rem;font-weight:300;margin-bottom:0.5rem;}.cta-band-sub{font-size:0.88rem;color:rgba(255,255,255,0.7);}
+.btn-white{background:white;color:var(--teal);padding:14px 32px;border-radius:2px;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:transform .2s,box-shadow .2s;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,0.15);}.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.2);}
+footer{background:var(--navy);color:rgba(255,255,255,0.5);padding:3rem 8vw 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-logo{font-family:var(--font-display);font-size:1.1rem;color:white;font-weight:400;margin-bottom:0.75rem;}.footer-tagline{font-size:0.8rem;line-height:1.65;max-width:260px;}
+.footer-col-title{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);font-weight:500;margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}.footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.82rem;transition:color .2s;}.footer-links a:hover{color:var(--teal-light);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.75rem;}.footer-bottom a{color:rgba(255,255,255,0.4);text-decoration:none;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:900px){.praticien-card{grid-template-columns:1fr;gap:2rem;}.praticien-photo{aspect-ratio:16/9;max-height:260px;}.equipe-grid{grid-template-columns:1fr;}.valeurs-grid{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}section{padding:3.5rem 5vw;}.page-hero{padding:120px 5vw 3.5rem;}}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Dr Barcelonne & Dr Loison<span>Cabinet d'Orthodontie · Argelès-sur-Mer</span></a>
+  <ul class="nav-links">
+    <li><a href="traitements.html">Traitements</a></li>
+    <li><a href="equipe.html" class="active">Notre équipe</a></li>
+    <li><a href="avis.html">Avis patients</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Prendre RDV</a>
+</nav>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › <span>Notre équipe</span></div>
+  <div class="page-hero-label">Qui sommes-nous</div>
+  <h1 class="page-hero-title">Une équipe au service<br>de votre <em>sourire</em></h1>
+  <p class="page-hero-sub">Des praticiens passionnés et une équipe soignante attentionnée pour vous accompagner à chaque étape de votre traitement.</p>
+</div>
+
+<section class="praticiens-section">
+  <div class="section-label">Nos orthodontistes</div>
+  <h2 class="section-title">Les <em>praticiens</em></h2>
+
+  <div class="praticien-card reveal">
+    <div class="praticien-photo">
+      <div class="praticien-initiale">B</div>
+      <div class="praticien-photo-badge">
+        <div class="praticien-photo-badge-name">Dr Barcelonne</div>
+        <div class="praticien-photo-badge-title">Orthodontiste</div>
+      </div>
+    </div>
+    <div class="praticien-content">
+      <div class="praticien-role">Orthodontiste — Praticien référent</div>
+      <div class="praticien-name">Dr Barcelonne</div>
+      <p class="praticien-bio">Titulaire d'un Diplôme d'Études Spécialisées en Orthodontie, le Dr Barcelonne exerce exclusivement l'orthodontie depuis plus de 15 ans. Formé aux meilleures techniques de correction dento-faciale, il prend en charge les cas complexes avec rigueur et pédagogie.<br><br>Convaincu que chaque traitement doit être sur mesure, il consacre le temps nécessaire à comprendre les attentes de chaque patient avant de proposer un plan de traitement. Sa réputation repose sur des résultats stables à long terme et un taux de satisfaction exceptionnel.</p>
+      <div class="praticien-tags">
+        <span class="praticien-tag">Malocclusions complexes</span>
+        <span class="praticien-tag">Orthopédie dento-faciale</span>
+        <span class="praticien-tag">Chirurgie orthognathique</span>
+      </div>
+      <div class="praticien-stats">
+        <div class="p-stat"><div class="p-stat-num">15+</div><div class="p-stat-label">Années d'expérience</div></div>
+        <div class="p-stat"><div class="p-stat-num">2 000+</div><div class="p-stat-label">Patients traités</div></div>
+        <div class="p-stat"><div class="p-stat-num">98%</div><div class="p-stat-label">Satisfaction</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="praticien-card reveal">
+    <div class="praticien-photo">
+      <div class="praticien-initiale">L</div>
+      <div class="praticien-photo-badge">
+        <div class="praticien-photo-badge-name">Dr Loison</div>
+        <div class="praticien-photo-badge-title">Orthodontiste</div>
+      </div>
+    </div>
+    <div class="praticien-content">
+      <div class="praticien-role">Orthodontiste — Spécialiste aligneurs</div>
+      <div class="praticien-name">Dr Loison</div>
+      <p class="praticien-bio">Spécialisée dans les techniques d'orthodontie invisible, le Dr Loison maîtrise les dernières avancées en matière de gouttières transparentes. Elle s'est formée aux technologies de simulation 3D pour offrir à ses patients une vision précise de leur traitement avant même de commencer.<br><br>Particulièrement appréciée pour son écoute et sa capacité à mettre à l'aise les patients anxieux, elle assure le suivi de nombreux adultes qui retrouvent confiance en leur sourire grâce à des traitements discrets et efficaces.</p>
+      <div class="praticien-tags">
+        <span class="praticien-tag">Aligneurs transparents</span>
+        <span class="praticien-tag">Orthodontie adulte</span>
+        <span class="praticien-tag">Simulation 3D</span>
+      </div>
+      <div class="praticien-stats">
+        <div class="p-stat"><div class="p-stat-num">10+</div><div class="p-stat-label">Années d'expérience</div></div>
+        <div class="p-stat"><div class="p-stat-num">1 500+</div><div class="p-stat-label">Patients traités</div></div>
+        <div class="p-stat"><div class="p-stat-num">4.9★</div><div class="p-stat-label">Note Google</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="equipe-section">
+  <div class="section-label">L'équipe soignante</div>
+  <h2 class="section-title">Celles qui font le <em>quotidien</em></h2>
+  <p class="section-subtitle">Un cabinet, c'est avant tout une équipe humaine. Ingrid et Natalya sont là à chaque étape pour vous accueillir et vous accompagner.</p>
+  <div class="equipe-grid">
+    <div class="equipe-card reveal">
+      <div class="equipe-avatar">I</div>
+      <div class="equipe-info">
+        <div class="equipe-role">Assistante dentaire</div>
+        <div class="equipe-name">Ingrid</div>
+        <div class="equipe-bio">Assistante qualifiée depuis 8 ans, Ingrid seconde les praticiens au fauteuil avec dextérité et professionnalisme. Elle a une capacité particulière à rassurer les patients les plus nerveux grâce à sa douceur et sa présence apaisante.</div>
+      </div>
+    </div>
+    <div class="equipe-card reveal">
+      <div class="equipe-avatar">N</div>
+      <div class="equipe-info">
+        <div class="equipe-role">Secrétaire médicale</div>
+        <div class="equipe-name">Natalya</div>
+        <div class="equipe-bio">Premier visage du cabinet, Natalya gère la prise de rendez-vous, les dossiers administratifs et la coordination avec les mutuelles. Toujours disponible et efficace, elle simplifie les démarches pour que vous vous concentriez uniquement sur votre traitement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="valeurs-section">
+  <div class="section-label" style="color:var(--teal-light);">Ce qui nous anime</div>
+  <h2 class="section-title" style="color:white;">Nos <em>valeurs</em></h2>
+  <div class="valeurs-grid">
+    <div class="valeur-card reveal">
+      <div class="valeur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="valeur-title">Excellence clinique</div>
+      <div class="valeur-text">Formation continue, technologies de pointe et protocoles rigoureux pour garantir des traitements au meilleur niveau de la spécialité.</div>
+    </div>
+    <div class="valeur-card reveal">
+      <div class="valeur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <div class="valeur-title">Bienveillance</div>
+      <div class="valeur-text">Chaque patient mérite d'être écouté, respecté et rassuré. Nous créons un environnement sécurisant pour les enfants comme pour les adultes.</div>
+    </div>
+    <div class="valeur-card reveal">
+      <div class="valeur-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="valeur-title">Transparence</div>
+      <div class="valeur-text">Devis détaillé, explications claires, aucune surprise. Vous savez exactement ce que vous payez et pourquoi, dès la première consultation.</div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-text">
+    <div class="cta-band-title">Venez rencontrer notre équipe.</div>
+    <div class="cta-band-sub">Première consultation offerte. Prenez rendez-vous en ligne, réponse sous 24h.</div>
+  </div>
+  <a href="contact.html" class="btn-white">Prendre rendez-vous</a>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo">Cabinet Barcelonne & Loison</div><div class="footer-tagline">Cabinet d'orthodontie spécialisé à Argelès-sur-Mer.</div></div>
+    <div><div class="footer-col-title">Traitements</div><ul class="footer-links"><li><a href="traitements.html#bagues">Bagues orthodontiques</a></li><li><a href="traitements.html#aligneurs">Aligneurs transparents</a></li><li><a href="traitements.html#enfants">Orthodontie enfant</a></li></ul></div>
+    <div><div class="footer-col-title">Cabinet</div><ul class="footer-links"><li><a href="equipe.html">Notre équipe</a></li><li><a href="avis.html">Avis patients</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:0468813234">04.68.81.32.34</a></li><li><a href="contact.html">15 Avenue Molière</a></li><li><a href="contact.html">66700 Argelès-sur-Mer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Cabinet Barcelonne & Loison</span><div style="display:flex;gap:1.5rem;"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
+</footer>
+<script>
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>20));
+document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(([e])=>{if(e.isIntersecting){e.target.classList.add('visible');}},{threshold:0.1}).observe(el));
+</script>
+</body>
+</html>
