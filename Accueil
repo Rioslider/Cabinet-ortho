@@ -449,12 +449,12 @@
     <span>Cabinet d'Orthodontie · Argelès-sur-Mer</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#traitements">Traitements</a></li>
-    <li><a href="#equipe">Notre équipe</a></li>
-    <li><a href="#avis">Avis patients</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="traitements.html">Traitements</a></li>
+    <li><a href="equipe.html">Notre équipe</a></li>
+    <li><a href="avis.html">Avis patients</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Prendre RDV</a>
+  <a href="contact.html" class="nav-cta">Prendre RDV</a>
   <button class="nav-mobile-btn" onclick="toggleMobileMenu()">
     <span></span><span></span><span></span>
   </button>
@@ -473,8 +473,8 @@
       Les Drs Barcelonne et Loison vous accompagnent vers un sourire harmonieux et durable. Expertise reconnue, approche personnalisée, technologies de pointe.
     </p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Prendre rendez-vous</a>
-      <a href="#traitements" class="btn-secondary">Découvrir nos soins →</a>
+      <a href="contact.html" class="btn-primary">Prendre rendez-vous</a>
+      <a href="traitements.html" class="btn-secondary">Découvrir nos soins →</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -732,7 +732,7 @@
     <div class="cta-band-title">Votre premier rendez-vous est offert.</div>
     <div class="cta-band-sub">Bilan complet, devis détaillé, sans engagement. Réponse sous 24h.</div>
   </div>
-  <a href="#contact" class="btn-white">Réserver maintenant</a>
+  <a href="contact.html" class="btn-white">Réserver maintenant</a>
 </div>
 
 <!-- CONTACT -->
@@ -836,19 +836,19 @@
     <div>
       <div class="footer-col-title">Traitements</div>
       <ul class="footer-links">
-        <li><a href="#traitements">Bagues orthodontiques</a></li>
-        <li><a href="#traitements">Aligneurs transparents</a></li>
-        <li><a href="#traitements">Orthodontie enfant</a></li>
-        <li><a href="#traitements">Contention</a></li>
+        <li><a href="traitements.html">Bagues orthodontiques</a></li>
+        <li><a href="traitements.html">Aligneurs transparents</a></li>
+        <li><a href="traitements.html">Orthodontie enfant</a></li>
+        <li><a href="traitements.html">Contention</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Cabinet</div>
       <ul class="footer-links">
-        <li><a href="#equipe">Notre équipe</a></li>
-        <li><a href="#avis">Avis patients</a></li>
-        <li><a href="#contact">Horaires</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="equipe.html">Notre équipe</a></li>
+        <li><a href="avis.html">Avis patients</a></li>
+        <li><a href="contact.html">Horaires</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
     <div>
