@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avis patients – Cabinet Barcelonne & Loison</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f2235;--teal:#2a7d6f;--teal-light:#3aa08e;--cream:#f7f5f0;--white:#ffffff;--gray-light:#f0eeea;--gray-mid:#c8c4bc;--gray-text:#6b6560;--gold:#c9a96e;--font-display:'Cormorant Garamond',serif;--font-body:'DM Sans',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{font-family:var(--font-body);background:var(--white);color:var(--navy);line-height:1.6;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:72px;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(42,125,111,0.12);transition:box-shadow .3s;}nav.scrolled{box-shadow:0 4px 24px rgba(15,34,53,0.08);}
+.nav-logo{font-family:var(--font-display);font-size:1.25rem;font-weight:500;color:var(--navy);letter-spacing:0.02em;text-decoration:none;display:flex;flex-direction:column;line-height:1.2;}.nav-logo span{font-size:0.65rem;font-family:var(--font-body);font-weight:300;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}.nav-links a{text-decoration:none;font-size:0.82rem;font-weight:400;color:var(--gray-text);letter-spacing:0.04em;transition:color .2s;}.nav-links a:hover,.nav-links a.active{color:var(--teal);}
+.nav-cta{background:var(--teal);color:white;padding:10px 22px;border-radius:2px;font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .2s;}.nav-cta:hover{background:var(--teal-light);transform:translateY(-1px);}
+.page-hero{padding:140px 8vw 5rem;background:var(--navy);position:relative;overflow:hidden;}.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(42,125,111,0.18) 0%,transparent 70%);pointer-events:none;}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:0.75rem;color:rgba(255,255,255,0.4);margin-bottom:2rem;position:relative;z-index:1;}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;}.breadcrumb span{color:rgba(255,255,255,0.7);}
+.page-hero-label{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal-light);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:10px;position:relative;z-index:1;}.page-hero-label::before{content:'';display:block;width:20px;height:1px;background:var(--teal-light);}
+.page-hero-title{font-family:var(--font-display);font-size:clamp(2.5rem,4vw,4.5rem);font-weight:300;color:white;line-height:1.1;margin-bottom:1.25rem;position:relative;z-index:1;}.page-hero-title em{font-style:italic;color:var(--teal-light);}
+.page-hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.6);max-width:560px;line-height:1.75;position:relative;z-index:1;}
+section{padding:5rem 8vw;}
+.section-label{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:10px;}.section-label::before{content:'';display:block;width:20px;height:1px;background:var(--teal);}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,3vw,3rem);font-weight:300;line-height:1.15;color:var(--navy);margin-bottom:1rem;}.section-title em{font-style:italic;color:var(--teal);}
+
+/* SCORE GLOBAL */
+.score-section{background:var(--cream);}
+.score-layout{display:grid;grid-template-columns:280px 1fr;gap:5rem;align-items:center;margin-top:3rem;}
+.score-big{background:white;border:1px solid var(--gray-light);border-radius:4px;padding:3rem 2.5rem;text-align:center;}
+.score-number{font-family:var(--font-display);font-size:6rem;font-weight:300;color:var(--navy);line-height:1;}
+.score-stars{font-size:1.6rem;color:var(--gold);letter-spacing:4px;margin:0.5rem 0;}
+.score-count{font-size:0.8rem;color:var(--gray-text);}
+.score-google{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:1.25rem;font-size:0.75rem;color:var(--gray-text);}
+.score-bars{display:flex;flex-direction:column;gap:0.75rem;}
+.score-bar-row{display:flex;align-items:center;gap:1rem;}
+.score-bar-label{font-size:0.8rem;color:var(--navy);min-width:40px;display:flex;align-items:center;gap:4px;}
+.score-bar-track{flex:1;height:8px;background:var(--gray-light);border-radius:4px;overflow:hidden;}
+.score-bar-fill{height:100%;background:var(--gold);border-radius:4px;transition:width 1.2s ease;}
+.score-bar-pct{font-size:0.75rem;color:var(--gray-text);min-width:36px;text-align:right;}
+
+/* AVIS GRID */
+.avis-section{background:white;}
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.avis-card{background:var(--cream);border:1px solid var(--gray-light);border-radius:2px;padding:2rem;transition:box-shadow .3s,transform .3s;}
+.avis-card:hover{box-shadow:0 12px 36px rgba(15,34,53,0.08);transform:translateY(-3px);}
+.avis-stars{color:var(--gold);font-size:0.9rem;margin-bottom:1rem;}
+.avis-text{font-size:0.85rem;color:var(--gray-text);line-height:1.75;margin-bottom:1.25rem;font-style:italic;}
+.avis-author{display:flex;align-items:center;gap:10px;}
+.avis-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--teal) 0%,var(--navy) 100%);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:white;font-weight:500;flex-shrink:0;}
+.avis-name{font-size:0.82rem;font-weight:500;color:var(--navy);}
+.avis-meta{font-size:0.72rem;color:var(--gray-text);}
+.avis-tag{display:inline-block;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(42,125,111,0.25);padding:3px 10px;border-radius:2px;margin-bottom:0.75rem;}
+
+/* LAISSER UN AVIS */
+.laisser-avis{background:var(--navy);padding:5rem 8vw;text-align:center;}
+.laisser-avis h2{font-family:var(--font-display);font-size:clamp(2rem,3vw,3rem);font-weight:300;color:white;margin-bottom:1rem;}
+.laisser-avis h2 em{font-style:italic;color:var(--teal-light);}
+.laisser-avis p{font-size:0.93rem;color:rgba(255,255,255,0.6);margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.75;}
+.btn-google{display:inline-flex;align-items:center;gap:12px;background:white;color:var(--navy);padding:16px 36px;border-radius:2px;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,0,0,0.2);}
+.btn-google:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.3);}
+
+.cta-band{background:linear-gradient(135deg,var(--teal) 0%,var(--navy) 100%);padding:4rem 8vw;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.cta-band-text{color:white;}.cta-band-title{font-family:var(--font-display);font-size:2rem;font-weight:300;margin-bottom:0.5rem;}.cta-band-sub{font-size:0.88rem;color:rgba(255,255,255,0.7);}
+.btn-white{background:white;color:var(--teal);padding:14px 32px;border-radius:2px;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:transform .2s,box-shadow .2s;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,0.15);}.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.2);}
+footer{background:var(--navy);color:rgba(255,255,255,0.5);padding:3rem 8vw 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-logo{font-family:var(--font-display);font-size:1.1rem;color:white;font-weight:400;margin-bottom:0.75rem;}.footer-tagline{font-size:0.8rem;line-height:1.65;max-width:260px;}
+.footer-col-title{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);font-weight:500;margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}.footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.82rem;transition:color .2s;}.footer-links a:hover{color:var(--teal-light);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.75rem;}.footer-bottom a{color:rgba(255,255,255,0.4);text-decoration:none;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:900px){.score-layout{grid-template-columns:1fr;gap:2.5rem;}.avis-grid{grid-template-columns:1fr;}.footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}section{padding:3.5rem 5vw;}.page-hero{padding:120px 5vw 3.5rem;}}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Dr Barcelonne & Dr Loison<span>Cabinet d'Orthodontie · Argelès-sur-Mer</span></a>
+  <ul class="nav-links">
+    <li><a href="traitements.html">Traitements</a></li>
+    <li><a href="equipe.html">Notre équipe</a></li>
+    <li><a href="avis.html" class="active">Avis patients</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Prendre RDV</a>
+</nav>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › <span>Avis patients</span></div>
+  <div class="page-hero-label">La parole à nos patients</div>
+  <h1 class="page-hero-title">Ils nous font<br><em>confiance</em></h1>
+  <p class="page-hero-sub">Découvrez les témoignages de nos patients et ce qu'ils pensent de leur expérience au cabinet. Leur satisfaction est notre meilleure récompense.</p>
+</div>
+
+<section class="score-section">
+  <div class="section-label">Note globale</div>
+  <h2 class="section-title">Notre réputation <em>Google</em></h2>
+  <div class="score-layout">
+    <div class="score-big reveal">
+      <div class="score-number">4.9</div>
+      <div class="score-stars">★★★★★</div>
+      <div class="score-count">Basé sur 127 avis</div>
+      <div class="score-google">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Google Reviews
+      </div>
+    </div>
+    <div class="score-bars reveal">
+      <div class="score-bar-row"><div class="score-bar-label">5★</div><div class="score-bar-track"><div class="score-bar-fill" style="width:88%"></div></div><div class="score-bar-pct">88%</div></div>
+      <div class="score-bar-row"><div class="score-bar-label">4★</div><div class="score-bar-track"><div class="score-bar-fill" style="width:8%"></div></div><div class="score-bar-pct">8%</div></div>
+      <div class="score-bar-row"><div class="score-bar-label">3★</div><div class="score-bar-track"><div class="score-bar-fill" style="width:3%"></div></div><div class="score-bar-pct">3%</div></div>
+      <div class="score-bar-row"><div class="score-bar-label">2★</div><div class="score-bar-track"><div class="score-bar-fill" style="width:1%"></div></div><div class="score-bar-pct">1%</div></div>
+      <div class="score-bar-row"><div class="score-bar-label">1★</div><div class="score-bar-track"><div class="score-bar-fill" style="width:0%"></div></div><div class="score-bar-pct">0%</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="avis-section">
+  <div class="section-label">Témoignages</div>
+  <h2 class="section-title">Ce qu'ils <em>disent</em></h2>
+  <div class="avis-grid">
+    <div class="avis-card reveal"><span class="avis-tag">Aligneurs adulte</span><div class="avis-stars">★★★★★</div><div class="avis-text">"J'avais honte de sourire depuis 20 ans. Le Dr Loison m'a proposé des aligneurs invisibles et aujourd'hui je ne peux plus m'arrêter de sourire. Le résultat est bluffant, le suivi irréprochable."</div><div class="avis-author"><div class="avis-avatar">SM</div><div><div class="avis-name">Sophie M.</div><div class="avis-meta">Il y a 2 semaines · Aligneurs transparents</div></div></div></div>
+    <div class="avis-card reveal"><span class="avis-tag">Enfant – Bagues</span><div class="avis-stars">★★★★★</div><div class="avis-text">"Le Dr Barcelonne suit ma fille depuis 3 ans. Chaque rendez-vous, elle ressort avec le sourire. L'équipe est incroyablement patiente avec les enfants et très pédagogue avec les parents."</div><div class="avis-author"><div class="avis-avatar">ML</div><div><div class="avis-name">Marie L.</div><div class="avis-meta">Il y a 1 mois · Orthodontie enfant</div></div></div></div>
+    <div class="avis-card reveal"><span class="avis-tag">Adulte – Bagues</span><div class="avis-stars">★★★★★</div><div class="avis-text">"J'ai commencé un traitement bagues à 38 ans. Zéro jugement, tout expliqué clairement, et Natalya est toujours disponible pour les questions administratives. Vraiment un cabinet 5 étoiles."</div><div class="avis-author"><div class="avis-avatar">PD</div><div><div class="avis-name">Pierre D.</div><div class="avis-meta">Il y a 3 semaines · Bagues céramiques</div></div></div></div>
+    <div class="avis-card reveal"><span class="avis-tag">Enfant – Appareil</span><div class="avis-stars">★★★★★</div><div class="avis-text">"Prise en charge rapide, diagnostic clair, devis honnête. Mon fils de 9 ans redoutait l'orthodontiste, maintenant il y va sans problème. Ingrid est formidable pour mettre les enfants à l'aise."</div><div class="avis-author"><div class="avis-avatar">CK</div><div><div class="avis-name">Claire K.</div><div class="avis-meta">Il y a 5 semaines · Appareil amovible</div></div></div></div>
+    <div class="avis-card reveal"><span class="avis-tag">Contention</span><div class="avis-stars">★★★★★</div><div class="avis-text">"Suivi de bout en bout impeccable. Le fil de contention a été posé parfaitement, aucune gêne. Deux ans après la fin du traitement, mes dents sont toujours parfaitement alignées. Merci !"</div><div class="avis-author"><div class="avis-avatar">AB</div><div><div class="avis-name">Aude B.</div><div class="avis-meta">Il y a 2 mois · Contention</div></div></div></div>
+    <div class="avis-card reveal"><span class="avis-tag">Aligneurs adulte</span><div class="avis-stars">★★★★★</div><div class="avis-text">"La simulation 3D avant de commencer m'a convaincu immédiatement. Voir le résultat final avant même la pose de la première gouttière, c'est rassurant. Et le résultat correspond exactement à la simulation !"</div><div class="avis-author"><div class="avis-avatar">TM</div><div><div class="avis-name">Thomas M.</div><div class="avis-meta">Il y a 3 mois · Aligneurs invisibles</div></div></div></div>
+    <div class="avis-card reveal"><span class="avis-tag">Urgence</span><div class="avis-stars">★★★★★</div><div class="avis-text">"Un bracket s'est décollé un vendredi matin. J'ai appelé le cabinet à 9h, j'étais pris en charge à 11h. Réactivité remarquable. Ce genre de choses fait toute la différence."</div><div class="avis-author"><div class="avis-avatar">LR</div><div><div class="avis-name">Lucas R.</div><div class="avis-meta">Il y a 6 semaines · Urgence orthodontique</div></div></div></div>
+    <div class="avis-card reveal"><span class="avis-tag">Premier bilan</span><div class="avis-stars">★★★★★</div><div class="avis-text">"Première consultation très complète. Photos, examen, explications détaillées et devis remis le jour même. Tout est transparent, rien n'est caché. On sent immédiatement le sérieux du cabinet."</div><div class="avis-author"><div class="avis-avatar">NF</div><div><div class="avis-name">Nora F.</div><div class="avis-meta">Il y a 1 semaine · Consultation bilan</div></div></div></div>
+    <div class="avis-card reveal"><span class="avis-tag">Enfant</span><div class="avis-stars">★★★★★</div><div class="avis-text">"Mes deux enfants sont suivis au cabinet depuis 4 ans. L'équipe connaît chaque patient par son prénom, les rendez-vous sont ponctuels. C'est devenu notre cabinet de confiance pour toute la famille."</div><div class="avis-author"><div class="avis-avatar">EB</div><div><div class="avis-name">Élise B.</div><div class="avis-meta">Il y a 1 mois · Orthodontie famille</div></div></div></div>
+  </div>
+</section>
+
+<div class="laisser-avis">
+  <h2>Vous êtes patient chez nous ?<br><em>Partagez votre expérience.</em></h2>
+  <p>Votre témoignage aide d'autres familles à choisir les bons soins. Cela ne prend que 2 minutes.</p>
+  <a href="https://g.page/r/VOTRE_PLACE_ID/review" class="btn-google" target="_blank">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+    Laisser un avis Google
+  </a>
+</div>
+
+<div class="cta-band">
+  <div class="cta-band-text">
+    <div class="cta-band-title">Rejoignez nos patients satisfaits.</div>
+    <div class="cta-band-sub">Premier bilan gratuit, sans engagement, réponse sous 24h.</div>
+  </div>
+  <a href="contact.html" class="btn-white">Prendre rendez-vous</a>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo">Cabinet Barcelonne & Loison</div><div class="footer-tagline">Cabinet d'orthodontie spécialisé à Argelès-sur-Mer.</div></div>
+    <div><div class="footer-col-title">Traitements</div><ul class="footer-links"><li><a href="traitements.html#bagues">Bagues orthodontiques</a></li><li><a href="traitements.html#aligneurs">Aligneurs transparents</a></li><li><a href="traitements.html#enfants">Orthodontie enfant</a></li></ul></div>
+    <div><div class="footer-col-title">Cabinet</div><ul class="footer-links"><li><a href="equipe.html">Notre équipe</a></li><li><a href="avis.html">Avis patients</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:0468813234">04.68.81.32.34</a></li><li><a href="contact.html">15 Avenue Molière</a></li><li><a href="contact.html">66700 Argelès-sur-Mer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Cabinet Barcelonne & Loison</span><div style="display:flex;gap:1.5rem;"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
+</footer>
+<script>
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>20));
+document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(([e])=>{if(e.isIntersecting){e.target.classList.add('visible');}},{threshold:0.1}).observe(el));
+</script>
+</body>
+</html>
