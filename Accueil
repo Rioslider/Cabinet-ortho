@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabinet d'Orthodontie Barcelonne & Loison – Argelès-sur-Mer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f2235;
+    --teal: #2a7d6f;
+    --teal-light: #3aa08e;
+    --cream: #f7f5f0;
+    --white: #ffffff;
+    --gray-light: #f0eeea;
+    --gray-mid: #c8c4bc;
+    --gray-text: #6b6560;
+    --gold: #c9a96e;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--navy);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 72px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(42,125,111,0.12);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 24px rgba(15,34,53,0.08); }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    display: flex; flex-direction: column; line-height: 1.2;
+  }
+  .nav-logo span { font-size: 0.65rem; font-family: var(--font-body); font-weight: 300; color: var(--teal); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.82rem; font-weight: 400; color: var(--gray-text); letter-spacing: 0.04em; transition: color .2s; }
+  .nav-links a:hover { color: var(--teal); }
+
+  .nav-cta {
+    background: var(--teal); color: white;
+    padding: 10px 22px; border-radius: 2px;
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; transition: background .2s, transform .2s;
+  }
+  .nav-cta:hover { background: var(--teal-light); transform: translateY(-1px); }
+
+  .nav-mobile-btn { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-mobile-btn span { display: block; width: 24px; height: 2px; background: var(--navy); transition: .3s; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8vh 5vw 8vh 8vw;
+    position: relative; z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--teal); font-weight: 500; margin-bottom: 2rem;
+  }
+  .hero-badge::before {
+    content: ''; display: block; width: 28px; height: 1px; background: var(--teal);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 4.5vw, 5rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--navy); margin-bottom: 1.5rem;
+  }
+  .hero-title em { font-style: italic; color: var(--teal); }
+
+  .hero-subtitle {
+    font-size: 0.95rem; font-weight: 300; color: var(--gray-text);
+    max-width: 440px; line-height: 1.75; margin-bottom: 2.5rem;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--teal); color: white;
+    padding: 14px 32px; border-radius: 2px;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: background .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 20px rgba(42,125,111,0.28);
+  }
+  .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(42,125,111,0.38); }
+
+  .btn-secondary {
+    color: var(--navy); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
+    text-decoration: none; display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--navy); padding-bottom: 2px;
+    transition: color .2s, border-color .2s;
+  }
+  .btn-secondary:hover { color: var(--teal); border-color: var(--teal); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    padding-top: 2rem; border-top: 1px solid var(--gray-light);
+  }
+  .stat-item { display: flex; flex-direction: column; }
+  .stat-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 400; color: var(--navy); line-height: 1; }
+  .stat-label { font-size: 0.72rem; color: var(--gray-text); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
+
+  .hero-right {
+    position: relative; background: var(--navy);
+    clip-path: polygon(6% 0, 100% 0, 100% 100%, 0% 100%);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-right-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0f2235 0%, #1a3a52 50%, #2a7d6f22 100%);
+  }
+
+  .hero-illustration {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    padding: 4rem 3rem;
+  }
+
+  .smile-icon {
+    width: 140px; height: 140px;
+    background: rgba(42,125,111,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(42,125,111,0.3);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{transform:scale(1); box-shadow:0 0 0 0 rgba(42,125,111,0.3);} 50%{transform:scale(1.03); box-shadow:0 0 0 20px rgba(42,125,111,0);} }
+
+  .smile-icon svg { width: 70px; height: 70px; }
+
+  .hero-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px; padding: 1.5rem 2rem;
+    color: white; text-align: center; backdrop-filter: blur(8px);
+    max-width: 280px;
+  }
+  .hero-card-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .hero-card-text { font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  .hero-floating-badge {
+    position: absolute; bottom: 2.5rem; right: 2.5rem;
+    background: var(--gold); color: var(--navy);
+    padding: 10px 18px; border-radius: 2px;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--navy);
+    padding: 1.5rem 8vw;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 10px;
+    color: rgba(255,255,255,0.7); font-size: 0.8rem;
+  }
+  .trust-item svg { color: var(--teal-light); flex-shrink: 0; }
+  .trust-divider { width: 1px; height: 24px; background: rgba(255,255,255,0.15); }
+
+  /* ── SECTION BASE ── */
+  section { padding: 6rem 8vw; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--teal); font-weight: 500; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before { content:''; display:block; width:20px; height:1px; background:var(--teal); }
+  .section-title {
+    font-family: var(--font-display); font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 300; line-height: 1.15; color: var(--navy); margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--teal); }
+  .section-subtitle { font-size: 0.93rem; color: var(--gray-text); max-width: 540px; line-height: 1.75; }
+
+  /* ── TRAITEMENTS ── */
+  #traitements { background: var(--cream); }
+  .traitements-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem; }
+
+  .traitements-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--gray-mid); border: 1.5px solid var(--gray-mid); }
+
+  .traitement-card {
+    background: white; padding: 2.5rem 2rem;
+    transition: transform .3s, box-shadow .3s;
+    position: relative; overflow: hidden; cursor: default;
+  }
+  .traitement-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px;
+    background: var(--teal); transition: width .4s ease;
+  }
+  .traitement-card:hover::after { width: 100%; }
+  .traitement-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(15,34,53,0.1); z-index: 1; }
+
+  .traitement-icon {
+    width: 52px; height: 52px; background: rgba(42,125,111,0.08);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .traitement-icon svg { width: 24px; height: 24px; color: var(--teal); }
+
+  .traitement-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--navy); margin-bottom: 0.75rem; }
+  .traitement-desc { font-size: 0.85rem; color: var(--gray-text); line-height: 1.7; margin-bottom: 1.5rem; }
+  .traitement-tag {
+    display: inline-block; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); border: 1px solid var(--teal); padding: 4px 12px; border-radius: 2px;
+  }
+
+  /* ── EQUIPE ── */
+  #equipe { background: white; }
+  .equipe-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+
+  .membre-card {
+    text-align: center; padding: 2rem 1.5rem;
+    border: 1px solid var(--gray-light); border-radius: 2px;
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .membre-card:hover { border-color: var(--teal); box-shadow: 0 8px 32px rgba(42,125,111,0.1); }
+
+  .membre-avatar {
+    width: 88px; height: 88px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.25rem; font-family: var(--font-display);
+    font-size: 1.8rem; color: white; font-weight: 300;
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+  .membre-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; color: var(--navy); margin-bottom: 0.25rem; }
+  .membre-role { font-size: 0.75rem; color: var(--teal); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; margin-bottom: 0.75rem; }
+  .membre-bio { font-size: 0.8rem; color: var(--gray-text); line-height: 1.65; }
+
+  /* ── POURQUOI NOUS ── */
+  #pourquoi { background: var(--navy); color: white; }
+  #pourquoi .section-label { color: var(--teal-light); }
+  #pourquoi .section-label::before { background: var(--teal-light); }
+  #pourquoi .section-title { color: white; }
+  #pourquoi .section-subtitle { color: rgba(255,255,255,0.6); }
+
+  .raisons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3.5rem; }
+
+  .raison-card {
+    padding: 2rem; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px; transition: border-color .3s, background .3s;
+    display: flex; gap: 1.25rem;
+  }
+  .raison-card:hover { border-color: rgba(42,125,111,0.4); background: rgba(42,125,111,0.06); }
+
+  .raison-num {
+    font-family: var(--font-display); font-size: 2.5rem; font-weight: 300;
+    color: var(--teal); line-height: 1; flex-shrink: 0; min-width: 40px;
+  }
+  .raison-content { flex: 1; }
+  .raison-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: white; margin-bottom: 0.5rem; }
+  .raison-text { font-size: 0.83rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+  /* ── AVIS ── */
+  #avis { background: var(--cream); }
+  .avis-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem; }
+
+  .rating-big {
+    display: flex; flex-direction: column; align-items: flex-end;
+  }
+  .rating-score { font-family: var(--font-display); font-size: 3.5rem; font-weight: 300; color: var(--navy); line-height: 1; }
+  .rating-stars { color: var(--gold); font-size: 1.1rem; letter-spacing: 2px; margin: 4px 0; }
+  .rating-label { font-size: 0.75rem; color: var(--gray-text); text-align: right; }
+
+  .avis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .avis-card {
+    background: white; padding: 2rem; border-radius: 2px;
+    border: 1px solid var(--gray-light);
+    transition: box-shadow .3s, transform .3s;
+  }
+  .avis-card:hover { box-shadow: 0 12px 36px rgba(15,34,53,0.08); transform: translateY(-3px); }
+
+  .avis-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; }
+  .avis-text { font-size: 0.85rem; color: var(--gray-text); line-height: 1.75; margin-bottom: 1.25rem; font-style: italic; }
+  .avis-author { display: flex; align-items: center; gap: 10px; }
+  .avis-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; color: white; font-weight: 500; flex-shrink: 0;
+  }
+  .avis-name { font-size: 0.82rem; font-weight: 500; color: var(--navy); }
+  .avis-date { font-size: 0.72rem; color: var(--gray-text); }
+
+  /* ── CONTACT ── */
+  #contact { background: white; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3.5rem; align-items: start; }
+
+  .contact-info { display: flex; flex-direction: column; gap: 2rem; }
+  .contact-block { display: flex; gap: 1rem; align-items: flex-start; }
+  .contact-icon {
+    width: 44px; height: 44px; background: rgba(42,125,111,0.08);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .contact-icon svg { width: 18px; height: 18px; color: var(--teal); }
+  .contact-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); font-weight: 500; margin-bottom: 4px; }
+  .contact-value { font-size: 0.9rem; color: var(--navy); font-weight: 400; line-height: 1.5; }
+
+  .horaires-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+  .horaires-table tr { border-bottom: 1px solid var(--gray-light); }
+  .horaires-table tr:last-child { border-bottom: none; }
+  .horaires-table td { padding: 8px 0; font-size: 0.83rem; }
+  .horaires-table td:first-child { color: var(--gray-text); width: 120px; }
+  .horaires-table td:last-child { color: var(--navy); font-weight: 400; text-align: right; }
+  .closed { color: var(--gray-mid) !important; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-text); font-weight: 500; }
+  .form-input, .form-select, .form-textarea {
+    padding: 12px 16px; border: 1px solid var(--gray-light);
+    border-radius: 2px; font-family: var(--font-body); font-size: 0.88rem;
+    color: var(--navy); background: var(--cream);
+    transition: border-color .2s, box-shadow .2s; outline: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--teal); box-shadow: 0 0 0 3px rgba(42,125,111,0.1);
+    background: white;
+  }
+  .form-textarea { resize: vertical; min-height: 110px; }
+
+  .form-submit {
+    background: var(--teal); color: white; border: none; cursor: pointer;
+    padding: 14px 32px; border-radius: 2px;
+    font-family: var(--font-body); font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: background .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 20px rgba(42,125,111,0.25);
+    align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(42,125,111,0.35); }
+
+  .form-note { font-size: 0.72rem; color: var(--gray-text); }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
+    padding: 4rem 8vw;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+  }
+  .cta-band-text { color: white; }
+  .cta-band-title { font-family: var(--font-display); font-size: 2rem; font-weight: 300; margin-bottom: 0.5rem; }
+  .cta-band-sub { font-size: 0.88rem; color: rgba(255,255,255,0.7); }
+  .btn-white {
+    background: white; color: var(--teal);
+    padding: 14px 32px; border-radius: 2px;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: transform .2s, box-shadow .2s; white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.5);
+    padding: 3rem 8vw 2rem;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-logo { font-family: var(--font-display); font-size: 1.1rem; color: white; font-weight: 400; margin-bottom: 0.75rem; }
+  .footer-tagline { font-size: 0.8rem; line-height: 1.65; max-width: 260px; }
+  .footer-col-title { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); font-weight: 500; margin-bottom: 1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.82rem; transition: color .2s; }
+  .footer-links a:hover { color: var(--teal-light); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; }
+  .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    #hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { clip-path: none; min-height: 340px; }
+    .traitements-grid { grid-template-columns: repeat(2, 1fr); }
+    .equipe-grid { grid-template-columns: repeat(2, 1fr); }
+    .raisons-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 5vw; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-mobile-btn { display: flex; }
+    .hero-left { padding: 4vh 5vw; }
+    .hero-stats { gap: 1.5rem; }
+    .traitements-grid { grid-template-columns: 1fr; }
+    .equipe-grid { grid-template-columns: 1fr 1fr; }
+    .avis-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    section { padding: 4rem 5vw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    Dr Barcelonne & Dr Loison
+    <span>Cabinet d'Orthodontie · Argelès-sur-Mer</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#traitements">Traitements</a></li>
+    <li><a href="#equipe">Notre équipe</a></li>
+    <li><a href="#avis">Avis patients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Prendre RDV</a>
+  <button class="nav-mobile-btn" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Cabinet d'orthodontie · Argelès-sur-Mer</div>
+    <h1 class="hero-title">
+      Souriez<br>
+      en toute<br>
+      <em>confiance.</em>
+    </h1>
+    <p class="hero-subtitle">
+      Les Drs Barcelonne et Loison vous accompagnent vers un sourire harmonieux et durable. Expertise reconnue, approche personnalisée, technologies de pointe.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Prendre rendez-vous</a>
+      <a href="#traitements" class="btn-secondary">Découvrir nos soins →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">15+</span>
+        <span class="stat-label">Années d'expérience</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Patients satisfaits</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">4.9★</span>
+        <span class="stat-label">Avis Google</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-right-bg"></div>
+    <div class="hero-illustration">
+      <div class="smile-icon">
+        <svg viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="35" cy="35" r="30" stroke="#2a7d6f" stroke-width="1.5"/>
+          <path d="M22 38 Q35 50 48 38" stroke="#3aa08e" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <circle cx="26" cy="28" r="3" fill="#3aa08e"/>
+          <circle cx="44" cy="28" r="3" fill="#3aa08e"/>
+          <path d="M27 38 L29 40 L31 38 L33 40 L35 38 L37 40 L39 38 L41 40 L43 38" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">Consultation offerte</div>
+        <div class="hero-card-text">Premier bilan orthodontique gratuit pour toute la famille. Devis détaillé sans engagement.</div>
+      </div>
+    </div>
+    <div class="hero-floating-badge">Consultation gratuite</div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Conventionné Sécurité Sociale
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+    Tiers payant accepté
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Enfants & adultes
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Urgences le jour même
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Parking gratuit
+  </div>
+</div>
+
+<!-- TRAITEMENTS -->
+<section id="traitements">
+  <div class="traitements-header reveal">
+    <div>
+      <div class="section-label">Ce que nous faisons</div>
+      <h2 class="section-title">Nos <em>traitements</em></h2>
+      <p class="section-subtitle">Des solutions adaptées à chaque âge, chaque besoin et chaque budget — pour un résultat qui dure toute une vie.</p>
+    </div>
+  </div>
+
+  <div class="traitements-grid">
+    <div class="traitement-card reveal">
+      <div class="traitement-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="traitement-title">Appareil bagues</div>
+      <div class="traitement-desc">La solution classique et efficace pour corriger les malocclusions. Bagues métalliques ou céramiques discrètes selon vos préférences esthétiques.</div>
+      <span class="traitement-tag">Enfants & adultes</span>
+    </div>
+
+    <div class="traitement-card reveal">
+      <div class="traitement-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      </div>
+      <div class="traitement-title">Aligneurs transparents</div>
+      <div class="traitement-desc">Gouttières invisibles amovibles pour corriger votre sourire discrètement. Idéal pour les adultes qui souhaitent un traitement sans compromis esthétiques.</div>
+      <span class="traitement-tag">Discret & confortable</span>
+    </div>
+
+    <div class="traitement-card reveal">
+      <div class="traitement-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="traitement-title">Orthodontie pédiatrique</div>
+      <div class="traitement-desc">Suivi spécialisé dès 7 ans. Interception précoce des problèmes pour éviter des traitements plus lourds à l'adolescence.</div>
+      <span class="traitement-tag">Dès 7 ans</span>
+    </div>
+
+    <div class="traitement-card reveal">
+      <div class="traitement-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="traitement-title">Contention</div>
+      <div class="traitement-desc">Maintien des résultats à long terme grâce à des gouttières ou fils de contention collés. Parce qu'un beau sourire mérite d'être préservé.</div>
+      <span class="traitement-tag">Post-traitement</span>
+    </div>
+
+    <div class="traitement-card reveal">
+      <div class="traitement-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="traitement-title">Bilan radiologique 3D</div>
+      <div class="traitement-desc">Scanner cone beam pour un diagnostic précis et un plan de traitement sur mesure. Technologie de pointe pour les meilleurs résultats.</div>
+      <span class="traitement-tag">Haute précision</span>
+    </div>
+
+    <div class="traitement-card reveal">
+      <div class="traitement-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="traitement-title">Devis & prise en charge</div>
+      <div class="traitement-desc">Accompagnement complet pour vos démarches mutuelle. Devis détaillé, facilités de paiement, et aide à la prise en charge 100% Santé.</div>
+      <span class="traitement-tag">Administratif simplifié</span>
+    </div>
+  </div>
+</section>
+
+<!-- ÉQUIPE -->
+<section id="equipe">
+  <div class="reveal">
+    <div class="section-label">Qui sommes-nous</div>
+    <h2 class="section-title">Une équipe à votre <em>écoute</em></h2>
+    <p class="section-subtitle">Des professionnels engagés qui combinent expertise clinique et bienveillance pour vous garantir une expérience sereine.</p>
+  </div>
+
+  <div class="equipe-grid">
+    <div class="membre-card reveal">
+      <div class="membre-avatar">B</div>
+      <div class="membre-name">Dr Barcelonne</div>
+      <div class="membre-role">Orthodontiste</div>
+      <div class="membre-bio">Spécialiste en orthodontie dento-faciale, le Dr Barcelonne accompagne ses patients avec rigueur et pédagogie depuis plus de 15 ans.</div>
+    </div>
+    <div class="membre-card reveal">
+      <div class="membre-avatar">L</div>
+      <div class="membre-name">Dr Loison</div>
+      <div class="membre-role">Orthodontiste</div>
+      <div class="membre-bio">Formée aux dernières techniques d'orthodontie invisible, le Dr Loison met un point d'honneur à personnaliser chaque traitement.</div>
+    </div>
+    <div class="membre-card reveal">
+      <div class="membre-avatar">I</div>
+      <div class="membre-name">Ingrid</div>
+      <div class="membre-role">Assistante dentaire</div>
+      <div class="membre-bio">Ingrid assiste les praticiens au fauteuil avec dextérité et rassure les patients les plus anxieux avec beaucoup de douceur.</div>
+    </div>
+    <div class="membre-card reveal">
+      <div class="membre-avatar">N</div>
+      <div class="membre-name">Natalya</div>
+      <div class="membre-role">Secrétaire médicale</div>
+      <div class="membre-bio">Premier contact du cabinet, Natalya gère les rendez-vous et les dossiers administratifs avec efficacité et le sourire.</div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI NOUS -->
+<section id="pourquoi">
+  <div class="reveal">
+    <div class="section-label">Nos engagements</div>
+    <h2 class="section-title" style="color:white;">Pourquoi nous <em>choisir</em> ?</h2>
+    <p class="section-subtitle">Ce qui fait la différence au quotidien, pour vous et pour votre famille.</p>
+  </div>
+
+  <div class="raisons-grid">
+    <div class="raison-card reveal">
+      <div class="raison-num">01</div>
+      <div class="raison-content">
+        <div class="raison-title">Spécialistes exclusifs</div>
+        <div class="raison-text">Contrairement à un cabinet généraliste, nous pratiquons l'orthodontie à 100%. Votre traitement bénéficie d'une expertise pointue et d'un regard clinique aiguisé.</div>
+      </div>
+    </div>
+    <div class="raison-card reveal">
+      <div class="raison-num">02</div>
+      <div class="raison-content">
+        <div class="raison-title">Technologie de pointe</div>
+        <div class="raison-text">Scanner 3D, empreintes numériques, simulation du résultat final avant traitement. Vous savez où vous allez avant de commencer.</div>
+      </div>
+    </div>
+    <div class="raison-card reveal">
+      <div class="raison-num">03</div>
+      <div class="raison-content">
+        <div class="raison-title">Suivi personnalisé</div>
+        <div class="raison-text">Un seul praticien référent pour tout votre traitement, des rendez-vous sans attente, et une disponibilité réelle en cas d'urgence.</div>
+      </div>
+    </div>
+    <div class="raison-card reveal">
+      <div class="raison-num">04</div>
+      <div class="raison-content">
+        <div class="raison-title">Transparence financière</div>
+        <div class="raison-text">Devis détaillé remis dès la première consultation, facilités de paiement sans frais, et aide active aux démarches de remboursement mutuelle.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section id="avis">
+  <div class="avis-header reveal">
+    <div>
+      <div class="section-label">Ce que disent nos patients</div>
+      <h2 class="section-title">Ils nous font <em>confiance</em></h2>
+    </div>
+    <div class="rating-big">
+      <div class="rating-score">4.9</div>
+      <div class="rating-stars">★★★★★</div>
+      <div class="rating-label">Basé sur 127 avis Google</div>
+    </div>
+  </div>
+
+  <div class="avis-grid">
+    <div class="avis-card reveal">
+      <div class="avis-stars">★★★★★</div>
+      <div class="avis-text">"Équipe au top ! Dr Barcelonne a suivi ma fille pendant 3 ans avec une patience et une expertise remarquables. Le résultat est magnifique, elle adore son sourire maintenant."</div>
+      <div class="avis-author">
+        <div class="avis-avatar">SM</div>
+        <div><div class="avis-name">Sophie M.</div><div class="avis-date">Il y a 2 semaines</div></div>
+      </div>
+    </div>
+    <div class="avis-card reveal">
+      <div class="avis-stars">★★★★★</div>
+      <div class="avis-text">"Cabinet très professionnel. J'ai commencé mon traitement avec des aligneurs transparents à 35 ans et je ne regrette pas. Natalya est adorable et toujours disponible pour les questions."</div>
+      <div class="avis-author">
+        <div class="avis-avatar">PL</div>
+        <div><div class="avis-name">Pierre L.</div><div class="avis-date">Il y a 1 mois</div></div>
+      </div>
+    </div>
+    <div class="avis-card reveal">
+      <div class="avis-stars">★★★★★</div>
+      <div class="avis-text">"Je recommande vivement ! Prise en charge rapide pour mon fils de 10 ans, explications claires sur le traitement, et pas d'attente aux rendez-vous. Un vrai professionnalisme."</div>
+      <div class="avis-author">
+        <div class="avis-avatar">MK</div>
+        <div><div class="avis-name">Marie K.</div><div class="avis-date">Il y a 3 semaines</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-band-text">
+    <div class="cta-band-title">Votre premier rendez-vous est offert.</div>
+    <div class="cta-band-sub">Bilan complet, devis détaillé, sans engagement. Réponse sous 24h.</div>
+  </div>
+  <a href="#contact" class="btn-white">Réserver maintenant</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-label">Nous contacter</div>
+    <h2 class="section-title">Prenez <em>rendez-vous</em></h2>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="contact-block">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Adresse</div>
+          <div class="contact-value">15 Avenue Molière<br>66700 Argelès-sur-Mer</div>
+        </div>
+      </div>
+
+      <div class="contact-block">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Téléphone</div>
+          <div class="contact-value"><a href="tel:0468813234" style="color:var(--navy);text-decoration:none;">04.68.81.32.34</a></div>
+        </div>
+      </div>
+
+      <div class="contact-block">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Horaires d'ouverture</div>
+          <table class="horaires-table">
+            <tr><td>Lundi</td><td>9h00 – 18h30</td></tr>
+            <tr><td>Mardi</td><td>9h00 – 18h30</td></tr>
+            <tr><td>Mercredi</td><td>9h00 – 17h00</td></tr>
+            <tr><td>Jeudi</td><td>9h00 – 18h30</td></tr>
+            <tr><td>Vendredi</td><td>9h00 – 17h00</td></tr>
+            <tr><td>Samedi</td><td class="closed">Fermé</td></tr>
+            <tr><td>Dimanche</td><td class="closed">Fermé</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Prénom</label>
+          <input type="text" class="form-input" placeholder="Marie">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nom</label>
+          <input type="text" class="form-input" placeholder="Dupont">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Téléphone</label>
+          <input type="tel" class="form-input" placeholder="06 XX XX XX XX">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="marie@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Motif de consultation</label>
+        <select class="form-select">
+          <option value="">Sélectionnez un motif</option>
+          <option>Premier bilan (consultation gratuite)</option>
+          <option>Renseignements traitements adulte</option>
+          <option>Orthodontie pour mon enfant</option>
+          <option>Aligneurs transparents</option>
+          <option>Urgence orthodontique</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message (optionnel)</label>
+        <textarea class="form-textarea" placeholder="Partagez vos questions ou contraintes de disponibilité…"></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit()">Envoyer ma demande</button>
+      <div class="form-note">🔒 Vos données sont confidentielles et ne sont jamais partagées. Réponse sous 24h ouvrées.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Cabinet Barcelonne & Loison</div>
+      <div class="footer-tagline">Cabinet d'orthodontie spécialisé à Argelès-sur-Mer. Expertise, bienveillance et technologies de pointe pour un sourire qui vous ressemble.</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Traitements</div>
+      <ul class="footer-links">
+        <li><a href="#traitements">Bagues orthodontiques</a></li>
+        <li><a href="#traitements">Aligneurs transparents</a></li>
+        <li><a href="#traitements">Orthodontie enfant</a></li>
+        <li><a href="#traitements">Contention</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Cabinet</div>
+      <ul class="footer-links">
+        <li><a href="#equipe">Notre équipe</a></li>
+        <li><a href="#avis">Avis patients</a></li>
+        <li><a href="#contact">Horaires</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:0468813234">04.68.81.32.34</a></li>
+        <li><a href="#">15 Avenue Molière</a></li>
+        <li><a href="#">66700 Argelès-sur-Mer</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Cabinet Barcelonne & Loison — Tous droits réservés</span>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="#">Mentions légales</a>
+      <a href="#">Politique de confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit() {
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = '✓ Demande envoyée !';
+    btn.style.background = '#1a6b5a';
+    btn.disabled = true;
+  }
+
+  // Mobile menu placeholder
+  function toggleMobileMenu() {
+    alert('Menu mobile – à connecter avec votre navigation complète.');
+  }
+</script>
+</body>
+</html>
