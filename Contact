@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact & Rendez-vous – Cabinet Barcelonne & Loison</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f2235;--teal:#2a7d6f;--teal-light:#3aa08e;--cream:#f7f5f0;--white:#ffffff;--gray-light:#f0eeea;--gray-mid:#c8c4bc;--gray-text:#6b6560;--gold:#c9a96e;--font-display:'Cormorant Garamond',serif;--font-body:'DM Sans',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{font-family:var(--font-body);background:var(--white);color:var(--navy);line-height:1.6;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:72px;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(42,125,111,0.12);transition:box-shadow .3s;}nav.scrolled{box-shadow:0 4px 24px rgba(15,34,53,0.08);}
+.nav-logo{font-family:var(--font-display);font-size:1.25rem;font-weight:500;color:var(--navy);letter-spacing:0.02em;text-decoration:none;display:flex;flex-direction:column;line-height:1.2;}.nav-logo span{font-size:0.65rem;font-family:var(--font-body);font-weight:300;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}.nav-links a{text-decoration:none;font-size:0.82rem;font-weight:400;color:var(--gray-text);letter-spacing:0.04em;transition:color .2s;}.nav-links a:hover,.nav-links a.active{color:var(--teal);}
+.nav-cta{background:var(--teal);color:white;padding:10px 22px;border-radius:2px;font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .2s;}.nav-cta:hover{background:var(--teal-light);transform:translateY(-1px);}
+.page-hero{padding:140px 8vw 5rem;background:var(--navy);position:relative;overflow:hidden;}.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(42,125,111,0.18) 0%,transparent 70%);pointer-events:none;}
+.breadcrumb{display:flex;gap:8px;align-items:center;font-size:0.75rem;color:rgba(255,255,255,0.4);margin-bottom:2rem;position:relative;z-index:1;}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none;}.breadcrumb span{color:rgba(255,255,255,0.7);}
+.page-hero-label{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal-light);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:10px;position:relative;z-index:1;}.page-hero-label::before{content:'';display:block;width:20px;height:1px;background:var(--teal-light);}
+.page-hero-title{font-family:var(--font-display);font-size:clamp(2.5rem,4vw,4.5rem);font-weight:300;color:white;line-height:1.1;margin-bottom:1.25rem;position:relative;z-index:1;}.page-hero-title em{font-style:italic;color:var(--teal-light);}
+.page-hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.6);max-width:560px;line-height:1.75;position:relative;z-index:1;}
+section{padding:5rem 8vw;}
+.section-label{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:10px;}.section-label::before{content:'';display:block;width:20px;height:1px;background:var(--teal);}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,3vw,3rem);font-weight:300;line-height:1.15;color:var(--navy);margin-bottom:1rem;}.section-title em{font-style:italic;color:var(--teal);}
+
+/* CONTACT MAIN */
+.contact-main{background:var(--white);}
+.contact-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;margin-top:3rem;}
+
+/* INFO SIDE */
+.info-blocks{display:flex;flex-direction:column;gap:2.5rem;}
+.info-block{display:flex;gap:1.25rem;align-items:flex-start;}
+.info-icon{width:48px;height:48px;background:rgba(42,125,111,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(42,125,111,0.15);}
+.info-icon svg{width:20px;height:20px;color:var(--teal);}
+.info-label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:5px;}
+.info-value{font-size:0.9rem;color:var(--navy);line-height:1.6;}
+.info-value a{color:var(--teal);text-decoration:none;font-weight:500;}
+.info-value a:hover{text-decoration:underline;}
+
+/* HORAIRES */
+#horaires{background:var(--cream);}
+.horaires-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start;}
+.horaires-table{width:100%;border-collapse:collapse;}
+.horaires-table tr{border-bottom:1px solid rgba(0,0,0,0.06);}
+.horaires-table tr:last-child{border-bottom:none;}
+.horaires-table td{padding:12px 0;font-size:0.88rem;}
+.horaires-table td:first-child{color:var(--gray-text);width:130px;}
+.horaires-table td:last-child{color:var(--navy);font-weight:500;text-align:right;}
+.horaires-table td.closed{color:var(--gray-mid) !important;font-weight:300;}
+.today-row td{color:var(--teal) !important;font-weight:600 !important;}
+.today-row td:last-child{color:var(--teal) !important;}
+.horaires-note{background:white;border:1px solid var(--gray-light);border-radius:2px;padding:1.5rem;margin-top:1.5rem;}
+.horaires-note-title{font-size:0.82rem;font-weight:600;color:var(--navy);margin-bottom:0.5rem;}
+.horaires-note-text{font-size:0.8rem;color:var(--gray-text);line-height:1.65;}
+.access-info{display:flex;flex-direction:column;gap:1.25rem;}
+.access-item{display:flex;gap:1rem;align-items:flex-start;}
+.access-icon{width:36px;height:36px;background:rgba(42,125,111,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.access-icon svg{width:16px;height:16px;color:var(--teal);}
+.access-text-title{font-size:0.78rem;font-weight:600;color:var(--navy);margin-bottom:2px;}
+.access-text-sub{font-size:0.78rem;color:var(--gray-text);line-height:1.5;}
+
+/* MAP */
+.map-section{background:var(--navy);padding:0;}
+.map-container{width:100%;height:400px;position:relative;overflow:hidden;}
+.map-container iframe{width:100%;height:100%;border:none;filter:grayscale(20%) contrast(1.05);}
+.map-overlay-card{position:absolute;top:2rem;left:8vw;background:white;border-radius:2px;padding:1.5rem 2rem;box-shadow:0 16px 48px rgba(0,0,0,0.2);max-width:280px;z-index:10;}
+.map-card-title{font-family:var(--font-display);font-size:1.1rem;color:var(--navy);font-weight:400;margin-bottom:0.25rem;}
+.map-card-addr{font-size:0.8rem;color:var(--gray-text);margin-bottom:1rem;line-height:1.5;}
+.map-card-link{display:inline-flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--teal);font-weight:500;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;}
+.map-card-link:hover{text-decoration:underline;}
+
+/* FORM */
+.form-section{background:var(--white);}
+.form-container{max-width:700px;margin:3rem auto 0;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group.full{grid-column:1/-1;}
+.form-label{font-size:0.75rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray-text);font-weight:500;}
+.form-input,.form-select,.form-textarea{padding:13px 16px;border:1px solid var(--gray-light);border-radius:2px;font-family:var(--font-body);font-size:0.88rem;color:var(--navy);background:var(--cream);transition:border-color .2s,box-shadow .2s;outline:none;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(42,125,111,0.1);background:white;}
+.form-textarea{resize:vertical;min-height:120px;}
+.form-actions{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-top:0.5rem;}
+.form-submit{background:var(--teal);color:white;border:none;cursor:pointer;padding:16px 40px;border-radius:2px;font-family:var(--font-body);font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(42,125,111,0.25);}
+.form-submit:hover{background:var(--teal-light);transform:translateY(-2px);box-shadow:0 8px 28px rgba(42,125,111,0.35);}
+.form-submit:disabled{background:var(--gray-mid);cursor:default;transform:none;box-shadow:none;}
+.form-note{font-size:0.72rem;color:var(--gray-text);line-height:1.5;}
+.form-success{display:none;background:rgba(42,125,111,0.08);border:1px solid rgba(42,125,111,0.2);border-radius:2px;padding:1.5rem;text-align:center;}
+.form-success-icon{font-size:2rem;margin-bottom:0.5rem;}
+.form-success-title{font-family:var(--font-display);font-size:1.4rem;color:var(--teal);margin-bottom:0.5rem;}
+.form-success-text{font-size:0.85rem;color:var(--gray-text);}
+
+footer{background:var(--navy);color:rgba(255,255,255,0.5);padding:3rem 8vw 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-logo{font-family:var(--font-display);font-size:1.1rem;color:white;font-weight:400;margin-bottom:0.75rem;}.footer-tagline{font-size:0.8rem;line-height:1.65;max-width:260px;}
+.footer-col-title{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);font-weight:500;margin-bottom:1rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}.footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.82rem;transition:color .2s;}.footer-links a:hover{color:var(--teal-light);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.75rem;}.footer-bottom a{color:rgba(255,255,255,0.4);text-decoration:none;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}.reveal.visible{opacity:1;transform:translateY(0);}
+@media(max-width:900px){.contact-layout{grid-template-columns:1fr;gap:3rem;}.horaires-layout{grid-template-columns:1fr;}.form-grid{grid-template-columns:1fr;}.form-group.full{grid-column:1;}.footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}section{padding:3.5rem 5vw;}.page-hero{padding:120px 5vw 3.5rem;}.map-overlay-card{position:static;margin:2rem;max-width:100%;}}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Dr Barcelonne & Dr Loison<span>Cabinet d'Orthodontie · Argelès-sur-Mer</span></a>
+  <ul class="nav-links">
+    <li><a href="traitements.html">Traitements</a></li>
+    <li><a href="equipe.html">Notre équipe</a></li>
+    <li><a href="avis.html">Avis patients</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Prendre RDV</a>
+</nav>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="index.html">Accueil</a> › <span>Contact</span></div>
+  <div class="page-hero-label">Nous joindre</div>
+  <h1 class="page-hero-title">Prenez <em>rendez-vous</em></h1>
+  <p class="page-hero-sub">Premier bilan orthodontique gratuit et sans engagement. Contactez-nous par formulaire, téléphone ou venez directement au cabinet.</p>
+</div>
+
+<!-- CONTACT INFOS -->
+<section class="contact-main">
+  <div class="section-label">Informations pratiques</div>
+  <h2 class="section-title">Nous <em>trouver</em></h2>
+  <div class="contact-layout">
+    <div class="info-blocks reveal">
+      <div class="info-block">
+        <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div>
+          <div class="info-label">Adresse</div>
+          <div class="info-value">15 Avenue Molière<br>66700 Argelès-sur-Mer</div>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg></div>
+        <div>
+          <div class="info-label">Téléphone</div>
+          <div class="info-value"><a href="tel:0468813234">04.68.81.32.34</a><br><span style="font-size:0.78rem;color:var(--gray-text);">Du lundi au vendredi, 9h–18h</span></div>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:contact@cabinet-barcelonne-loison.fr">contact@cabinet-barcelonne-loison.fr</a></div>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+        <div>
+          <div class="info-label">Prise en charge</div>
+          <div class="info-value">Conventionné Sécurité Sociale<br>Tiers payant accepté<br>Facilités de paiement disponibles</div>
+        </div>
+      </div>
+    </div>
+    <!-- FORM -->
+    <div class="reveal">
+      <div id="form-success" class="form-success">
+        <div class="form-success-icon">✓</div>
+        <div class="form-success-title">Demande envoyée !</div>
+        <div class="form-success-text">Nous vous recontacterons sous 24h ouvrées pour confirmer votre rendez-vous.</div>
+      </div>
+      <form id="contact-form" class="form-grid" onsubmit="handleSubmit(event)">
+        <div class="form-group"><label class="form-label">Prénom *</label><input type="text" class="form-input" placeholder="Marie" required></div>
+        <div class="form-group"><label class="form-label">Nom *</label><input type="text" class="form-input" placeholder="Dupont" required></div>
+        <div class="form-group"><label class="form-label">Téléphone *</label><input type="tel" class="form-input" placeholder="06 XX XX XX XX" required></div>
+        <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" placeholder="marie@email.com" required></div>
+        <div class="form-group full"><label class="form-label">Motif de consultation *</label>
+          <select class="form-select" required>
+            <option value="">Sélectionnez un motif</option>
+            <option>Premier bilan (consultation gratuite)</option>
+            <option>Renseignements traitements adulte</option>
+            <option>Orthodontie pour mon enfant</option>
+            <option>Aligneurs transparents</option>
+            <option>Urgence orthodontique</option>
+            <option>Contention / suivi post-traitement</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group full"><label class="form-label">Disponibilités souhaitées</label>
+          <select class="form-select">
+            <option value="">Pas de préférence</option>
+            <option>Matin (9h–12h)</option>
+            <option>Après-midi (14h–18h)</option>
+            <option>Mercredi</option>
+            <option>Vendredi</option>
+          </select>
+        </div>
+        <div class="form-group full"><label class="form-label">Message (optionnel)</label><textarea class="form-textarea" placeholder="Décrivez votre situation, posez vos questions, ou précisez vos contraintes…"></textarea></div>
+        <div class="form-group full">
+          <div class="form-actions">
+            <button type="submit" class="form-submit" id="submit-btn">Envoyer ma demande</button>
+            <div class="form-note">🔒 Données confidentielles. Réponse sous 24h ouvrées.<br>Consultation initiale gratuite et sans engagement.</div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- HORAIRES -->
+<section id="horaires">
+  <div class="section-label">Quand nous voir</div>
+  <h2 class="section-title">Horaires <em>d'ouverture</em></h2>
+  <div class="horaires-layout">
+    <div class="reveal">
+      <table class="horaires-table">
+        <tr id="row-lundi"><td>Lundi</td><td>9h00 – 12h30 / 14h00 – 18h30</td></tr>
+        <tr id="row-mardi"><td>Mardi</td><td>9h00 – 12h30 / 14h00 – 18h30</td></tr>
+        <tr id="row-mercredi"><td>Mercredi</td><td>9h00 – 17h00</td></tr>
+        <tr id="row-jeudi"><td>Jeudi</td><td>9h00 – 12h30 / 14h00 – 18h30</td></tr>
+        <tr id="row-vendredi"><td>Vendredi</td><td>9h00 – 17h00</td></tr>
+        <tr id="row-samedi"><td>Samedi</td><td class="closed">Fermé</td></tr>
+        <tr id="row-dimanche"><td>Dimanche</td><td class="closed">Fermé</td></tr>
+      </table>
+      <div class="horaires-note">
+        <div class="horaires-note-title">⚡ Urgences orthodontiques</div>
+        <div class="horaires-note-text">Un bracket décollé ou une douleur soudaine ? Appelez-nous le matin dès l'ouverture. Nous faisons notre maximum pour vous prendre en charge le jour même.</div>
+      </div>
+    </div>
+    <div class="access-info reveal">
+      <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--navy);font-weight:300;margin-bottom:1.5rem;">Comment nous <em style="color:var(--teal)">accéder</em> ?</div>
+      <div class="access-item">
+        <div class="access-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div><div class="access-text-title">En voiture</div><div class="access-text-sub">Parking gratuit devant le cabinet. Depuis le centre-ville, prendre l'Avenue Molière direction la plage.</div></div>
+      </div>
+      <div class="access-item">
+        <div class="access-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div><div class="access-text-title">En bus</div><div class="access-text-sub">Arrêt "Molière" – lignes 2 et 5. À 5 minutes à pied du cabinet.</div></div>
+      </div>
+      <div class="access-item">
+        <div class="access-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <div><div class="access-text-title">Accessibilité PMR</div><div class="access-text-sub">Cabinet de plain-pied, accessible aux personnes à mobilité réduite. Place réservée devant l'entrée.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARTE -->
+<div class="map-section">
+  <div style="position:relative;">
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2897.5!2d3.0239!3d42.5469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b02e0b5e5e5e5e%3A0x0!2s15+Avenue+Moli%C3%A8re%2C+66700+Argel%C3%A8s-sur-Mer!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="map-overlay-card">
+      <div class="map-card-title">Cabinet Barcelonne & Loison</div>
+      <div class="map-card-addr">15 Avenue Molière<br>66700 Argelès-sur-Mer<br>04.68.81.32.34</div>
+      <a href="https://maps.google.com/?q=15+Avenue+Moliere+66700+Argeles-sur-Mer" target="_blank" class="map-card-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Ouvrir dans Google Maps
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo">Cabinet Barcelonne & Loison</div><div class="footer-tagline">Cabinet d'orthodontie spécialisé à Argelès-sur-Mer.</div></div>
+    <div><div class="footer-col-title">Traitements</div><ul class="footer-links"><li><a href="traitements.html#bagues">Bagues orthodontiques</a></li><li><a href="traitements.html#aligneurs">Aligneurs transparents</a></li><li><a href="traitements.html#enfants">Orthodontie enfant</a></li></ul></div>
+    <div><div class="footer-col-title">Cabinet</div><ul class="footer-links"><li><a href="equipe.html">Notre équipe</a></li><li><a href="avis.html">Avis patients</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="tel:0468813234">04.68.81.32.34</a></li><li><a href="contact.html">15 Avenue Molière</a></li><li><a href="contact.html">66700 Argelès-sur-Mer</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Cabinet Barcelonne & Loison</span><div style="display:flex;gap:1.5rem;"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>20));
+document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(([e])=>{if(e.isIntersecting){e.target.classList.add('visible');}},{threshold:0.1}).observe(el));
+// Highlight today's row
+const days=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+const today=days[new Date().getDay()];
+const row=document.getElementById('row-'+today);
+if(row)row.classList.add('today-row');
+// Form submit
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('submit-btn');
+  btn.textContent='Envoi en cours…';btn.disabled=true;
+  setTimeout(()=>{
+    document.getElementById('contact-form').style.display='none';
+    document.getElementById('form-success').style.display='block';
+  },1200);
+}
+</script>
+</body>
+</html>
